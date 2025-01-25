@@ -1,0 +1,7 @@
+{
+  "name": "tp4",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
