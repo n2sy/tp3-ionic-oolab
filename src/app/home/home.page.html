@@ -1,20 +1,63 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title> ToDo List </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="bg-img">
+    <h1>Aujourd'hui</h1>
+    <h5>{{ currentDate | date:'shortDate' }} </h5>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    @for (task of tabTasks; track $index) {
+    <ion-card>
+      <ion-item-sliding>
+        <ion-item>
+          <ion-checkbox
+            [checked]="task.checked"
+            (ionChange)="updateTask(task.id, !task.checked)"
+            justify="start"
+          >
+            <ion-label>
+              <!-- @if(task.checked) {
+            <span class="barre">{{ task.text }}</span>
+
+            } @else {
+            <span>{{ task.text }}</span>
+            } -->
+
+              <span [ngClass]="{barre: task.checked}">{{ task.text }}</span>
+              <!-- <span [class.barre]="task.checked">{{ task.text }}</span> -->
+              <br />
+              {{ task.date | date:"shortTime"}}
+            </ion-label>
+          </ion-checkbox>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option (click)="deleteHandler(task.id)" color="danger"
+            >Delete</ion-item-option
+          >
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-card>
+
+    } @if (!showAddButton) {
+    <ion-item>
+      <ion-input #txt type="text"></ion-input>
+      <ion-button (click)="addHandler(txt.value)" shape="round"
+        ><ion-icon slot="icon-only" name="add-outline"></ion-icon
+      ></ion-button>
+    </ion-item>
+
+    <ion-button (click)="toggleShowAddButton()" color="dark" expand="block"
+      >Annuler</ion-button
+    >
+
+    } @else {
+    <ion-button (click)="toggleShowAddButton()" color="dark" expand="block"
+      >Ajouter une tâche</ion-button
+    >
+
+    }
   </div>
 </ion-content>

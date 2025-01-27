@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center ion-margin">
+    <form #f="ngForm">
+      <ion-label>Email</ion-label>
+      <ion-input ngModel name="email" type="text"></ion-input>
+      <ion-label>Password</ion-label>
+      <ion-input ngModel name="password" type="text"></ion-input>
+
+      @if(showLogin) {
+      <ion-button (click)="LoginHandler(f)" expand="block" color="dark"
+        >Log in</ion-button
+      >
+      <ion-button
+        (click)="toggleShowLoginBtn()"
+        expand="block"
+        color="secondary"
+        >Switch To Register</ion-button
+      >
+
+      } @else {
+      <ion-button (click)="registerHandler(f)" expand="block" color="dark"
+        >Register</ion-button
+      >
+      <ion-button
+        (click)="toggleShowLoginBtn()"
+        expand="block"
+        color="secondary"
+        >Switch To Login</ion-button
+      >
+      }
+    </form>
+  </div>
+</ion-content>
