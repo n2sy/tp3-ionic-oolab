@@ -7,15 +7,7 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyBDDfZzZShRyDiMtYA41lafi7xGYCgDQ4g',
-  authDomain: 'ng-tasks-c6b03.firebaseapp.com',
-  databaseURL: 'https://ng-tasks-c6b03.firebaseio.com',
-  projectId: 'ng-tasks-c6b03',
-  storageBucket: 'ng-tasks-c6b03.firebasestorage.app',
-  messagingSenderId: '577282019785',
-  appId: '1:577282019785:web:db19d822bc874e0b18d818',
-};
+const firebaseConfig = {};
 
 @Component({
   selector: 'app-login',
